@@ -1,9 +1,9 @@
 export class Proyecto {
 	nombre: string;
 	id: string;
+	fecha_inicio: date;
+	colaboradores: number;
 	icono: string;
-	fecha_inicio: string;
-	colaboradores: numeric;
 	constructor() {
     // code...
   	}

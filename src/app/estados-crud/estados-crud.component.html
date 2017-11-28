@@ -1,16 +1,12 @@
 <div class="container">
-	<legend class="text-center">Proyectos</legend>
+	<legend class="text-center">Estados</legend>
 	<div class="form-inline" *ngIf="crud_operation.is_visible">
-		<label>Nombre:</label>
-		<input class="form-control" type="text" size="10" placeholder="Casa..." [(ngModel)]="current_proyecto.nombre">
 		<label>Id:</label>
-		<input class="form-control" type="text" size="5" placeholder="2076..." [(ngModel)]="current_proyecto.id">
-		<label>Fecha de Inicio:</label>
-		<input class="form-control" type="date" style="width: 11,1em;" min="2015-01-01" max="2017-12-20" placeholder="01/10/2017" [(ngModel)]="current_proyecto.fecha_inicio">
-		<label>Colaboradores</label>
-		<input class="form-control" type="number" style="width: 4em;" placeholder="1" [(ngModel)]="current_proyecto.colaboradores">
-		<label>Icono:</label>
-		<input class="form-control" type="text" size="5" placeholder="link aqui.." [(ngModel)]="current_proyecto.icono">
+		<input class="form-control" type="text" size="10" placeholder="1151..." [(ngModel)]="current_estado.id">
+		<label>Descripción:</label>
+		<input class="form-control" type="text" size="10" placeholder="Terminado" [(ngModel)]="current_estado.descripcion">
+		<label>Orden</label>
+		<input class="form-control" type="text" size="10" placeholder="wasd..." [(ngModel)]="current_estado.orden">
 		<button class="btn btn-primary"(click)="save()">
 			<i class="fa fa-floppy-o" aria-hidden="true"></i>
 			Save
@@ -20,24 +16,20 @@
 			Cancel
 		</button>
 	</div>
-	<table  class="table table-striped table-hover">
+	<table class="table table-striped table-hover">
 		<tr>
-			<th>Nombre</th>
 			<th>Id</th>
-			<th>Fecha de Inicio</th>
-			<th>Colaboradores</th>
-			<th>Icono</th>
+			<th>Descripción</th>
+			<th>Orden</th>
 			<th class="text-right">
 				<button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
         		<button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 			</th>
 		</tr>
 		<tr *ngFor="let row of data">
-			<td>{{row.nombre}}</td>
 			<td>{{row.id}}</td>
-			<td>{{row.fecha_inicio}}</td>
-			<td>{{row.colaboradores}}</td>
-			<td><a href="{{row.icono}}"><img src="{{row.icono}}" width="50" height="50"></a></td>
+			<td>{{row.descripcion}}</td>
+			<td>{{row.orden}}</td>
 			<td class="text-right">
 				<div *ngIf="!row.confirm">
 					<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
