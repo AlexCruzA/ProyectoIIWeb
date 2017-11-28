@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuario';
 
-
 @Component({
   selector: 'app-usuarios-crud',
   templateUrl: './usuarios-crud.component.html',

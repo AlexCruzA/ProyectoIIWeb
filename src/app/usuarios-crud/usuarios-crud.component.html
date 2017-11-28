@@ -6,7 +6,7 @@
 		<label>Id::</label>
 		<input class="form-control" type="text" placeholder="2076..." [(ngModel)]="current_usuario.id">
 		<label>Avatar:</label>
-		<input class="form-control" type="string" placeholder="foto" [(ngModel)]="current_usuario.avatar">
+		<input class="form-control" type="string" placeholder="pegue el link aqui..." [(ngModel)]="current_usuario.avatar">
 		<button class="btn btn-primary"(click)="save()">
 			<i class="fa fa-floppy-o" aria-hidden="true"></i>
 			Save
@@ -29,7 +29,7 @@
 		<tr *ngFor="let row of data">
 			<td>{{row.nombre}}</td>
 			<td>{{row.id}}</td>
-			<td>{{row.avatar}}</td>
+			<td><a href="{{row.avatar}}"><img src="{{row.avatar}}" width="40" height="40"></a></td>
 			<td class="text-right">
 				<div *ngIf="!row.confirm">
 					<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>

@@ -1,0 +1,21 @@
+<div class="container">
+	<legend class="text-center">Proyectos</legend>
+	<div class="form-inline" *ngIf="crud_operation.is_visible">
+		<label>Nombre:</label>
+		<input class="form-control" type="text" placeholder="Juan..." [(ngModel)]="current_proyecto.nombre">
+		<label>Id::</label>
+		<input class="form-control" type="text" placeholder="2076..." [(ngModel)]="current_proyecto.id">
+		<label>Icono:</label>
+		<input class="form-control" type="string" placeholder="link aqui.." [(ngModel)]="current_proyecto.icono">
+		<label>Fecha de inicio:</label>
+		<input class="form-control" type="string" placeholder="01/10/2017" [(ngModel)]="current_proyecto.fecha_inicio">
+		<button class="btn btn-primary"(click)="save()">
+			<i class="fa fa-floppy-o" aria-hidden="true"></i>
+			Save
+		</button>
+		<button class="btn btn-default"(click)="crud_operation.is_visible = false">
+			<i class="fa fa-ban" aria-hidden="true"></i>
+			Cancel
+		</button>
+	</div>
+</div>
