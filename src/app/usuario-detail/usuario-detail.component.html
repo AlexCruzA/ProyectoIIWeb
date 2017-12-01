@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    {{usuario.nombre}}
+    <a class="pull-right" routerLink="/usuarios">
+      Back
+    </a>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <td>{{usuario.id}}</td>
+      </tr>
+      <tr>
+        <th>Avatar</th>
+        <th><a href="{{usuario.avatar}}"><img src="{{usuario.avatar}}" width="60" height="60"></a></th>
+      </tr>
+    </table>
+  </div>
+</div>

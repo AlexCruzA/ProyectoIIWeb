@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../proyecto';
+import { ProyectoService } from '../proyecto.service';
 
 @Component({
   selector: 'app-proyectos-crud',
@@ -11,10 +12,10 @@ export class ProyectosCrudComponent implements OnInit {
 	data: Proyecto[];
 	current_proyecto: Proyecto;
 	crud_operation = { is_new: false, is_visible: false };
-	constructor() { }
+	constructor(private service: ProyectoService) { }
 
   ngOnInit() {
-  	this.data = JSON.parse(localStorage.getItem('proyectos') || '[]');
+  	this.data = this.service.read();
   	this.current_proyecto = new Proyecto();
   }
 
@@ -42,7 +43,7 @@ export class ProyectosCrudComponent implements OnInit {
     if (this.crud_operation.is_new) {
       this.data.push(this.current_proyecto);
     }
-    localStorage.setItem('proyectos', JSON.stringify(this.data));
+    this.service.save(this.data);
     this.current_proyecto = new Proyecto();
     this.crud_operation.is_visible = false;
   }

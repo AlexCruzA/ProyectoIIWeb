@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuario';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-usuarios-crud',
@@ -11,10 +12,10 @@ export class UsuariosCrudComponent implements OnInit {
   data: Usuario[];
   current_usuario: Usuario;
   crud_operation = { is_new: false, is_visible: false };
-  constructor() { }
+  constructor(private service: UsuarioService) { }
 
   ngOnInit() {
-  	this.data = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    this.data = this.service.read();
   	this.current_usuario = new Usuario();
   }
 
@@ -42,7 +43,7 @@ export class UsuariosCrudComponent implements OnInit {
     if (this.crud_operation.is_new) {
       this.data.push(this.current_usuario);
     }
-    localStorage.setItem('usuarios', JSON.stringify(this.data));
+    this.service.save(this.data);
     this.current_usuario = new Usuario();
     this.crud_operation.is_visible = false;
   }
