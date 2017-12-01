@@ -1,0 +1,14 @@
+<ul>
+  <li draggable [dragScope]="'drink'">Coffee</li>
+  <li draggable [dragScope]="'drink'">Tea</li>
+  <li draggable [dragScope]="'meal'">Biryani</li>
+  <li draggable [dragScope]="'meal'">Kebab</li>
+</ul>  
+
+<div droppable [dropScope]="'drink'" [dragOverClass]="'drag-target-border'">
+  <p>Only Drinks can be dropped in the above container</p>
+</div>               
+ 
+<div droppable [dropScope]="['drink', 'meal']" [dragOverClass]="'drag-target-border'">
+  <p>Both Meal and Drinks can be dropped in the above container</p>
+</div>               

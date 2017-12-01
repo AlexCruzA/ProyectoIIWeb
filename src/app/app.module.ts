@@ -9,6 +9,8 @@ import { UsuariosCrudComponent } from './usuarios-crud/usuarios-crud.component';
 import { ProyectosCrudComponent } from './proyectos-crud/proyectos-crud.component';
 import { EstadosCrudComponent } from './estados-crud/estados-crud.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Ng2DragDropModule } from 'ng2-drag-drop';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { InicioComponent } from './inicio/inicio.component';
     ProyectosCrudComponent,
     EstadosCrudComponent,
     InicioComponent,
+    DashboardComponent,
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Ng2DragDropModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
