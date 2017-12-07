@@ -9,13 +9,14 @@ import { ProyectosCrudComponent } from './proyectos-crud/proyectos-crud.componen
 import { EstadosCrudComponent } from './estados-crud/estados-crud.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { ProyectoDetailComponent } from './proyecto-detail/proyecto-detail.component';
 import { ProyectoService } from './proyecto.service';
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 import { UsuarioService } from './usuario.service';
 import { EstadoDetailComponent } from './estado-detail/estado-detail.component';
 import { EstadoService } from './estado.service';
+
+import {DndModule} from 'ng2-dnd';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,12 @@ import { EstadoService } from './estado.service';
     ProyectoDetailComponent,
     UsuarioDetailComponent,
     EstadoDetailComponent,
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    Ng2DragDropModule.forRoot()
+    DndModule.forRoot(),
   ],
   providers: [ProyectoService, UsuarioService, EstadoService],
   bootstrap: [AppComponent]
