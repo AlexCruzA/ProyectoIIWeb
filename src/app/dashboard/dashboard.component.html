@@ -1,20 +1,55 @@
 <h4>Drag-and-Drop - Shopping basket</h4>
 <div class="row">
-
     <div class="col-sm-3">
         <div class="panel panel-success">
-            <div class="panel-heading">Open
+            <div class="panel-heading">Tareas
                 <th class="text-right">
-                    <button class="btn btn-success" routerLink="/proyectos"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <button class="btn btn-success" routerLink="/tareas"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </th>
             </div>
-            
+            <div class="panel-body"> 
+                <div class="panel panel-default" dnd-draggable [dragData]="tarea" [dropZones]="['demo1']" 
+                *ngFor="let row of data">
+                    {{row.nombre}} 
+
+                    <div *ngIf="!row.confirm">
+                        <button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-danger" (click)="row.confirm = true"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <a class="btn btn-info" [routerLink]="['/tareas/', row.id]">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div dnd-droppable (onDropSuccess)="addToEstado($event)" [dropZones]="['demo1']" class="panel panel-info">
+            <div class="panel-heading">Open</div>
             <div class="panel-body">
-                <div *ngFor="let product of availableProducts" class="panel panel-default"
-                    dnd-draggable [dragEnabled]="product.quantity>0" [dragData]="product" (onDragSuccess)="orderedProduct($event)" [dropZones]="['demo1']">
+                <div *ngFor="let product of shoppingBasket" >
                     <div class="panel-body">
-                        <div [hidden]="product.quantity===0">{{product.name}} - \${{product.cost}}<br>(available: {{product.quantity}})</div>
-                        <div [hidden]="product.quantity>0"><del>{{product.name}}</del><br>(NOT available)</div>
+                        <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
+                           {{row.nombre}}
+
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-3">
+        <div dnd-droppable (onDropSuccess)="addToEstado($event)" [dropZones]="['demo1']" class="panel panel-info">
+            <div class="panel-heading">In Progess</div>
+            <div class="panel-body">
+                 <div *ngFor="let product of shoppingBasket" >
+                    <div class="panel-body">
+                        <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
+                           {{row.nombre}}
+
+                        </div><br>
                     </div>
                 </div>
             </div>
@@ -22,51 +57,15 @@
     </div>
 
     <div class="col-sm-3">
-        <div class="panel panel-success">
-            <div class="panel-heading">in
-                <th class="text-right">
-                    <button class="btn btn-success" routerLink="/proyectos"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                </th>
-            </div>
-            
+        <div dnd-droppable (onDropSuccess)="addToEstado($event)" [dropZones]="['demo1']" class="panel panel-info">
+            <div class="panel-heading">Done</div>
             <div class="panel-body">
-                <div *ngFor="let product of availableProducts" class="panel panel-default"
-                    dnd-draggable [dragEnabled]="product.quantity>0" [dragData]="product" (onDragSuccess)="orderedProduct($event)" [dropZones]="['demo1']">
+                 <div *ngFor="let product of shoppingBasket" >
                     <div class="panel-body">
-                        <div [hidden]="product.quantity===0">{{product.name}} - \${{product.cost}}<br>(available: {{product.quantity}})</div>
-                        <div [hidden]="product.quantity>0"><del>{{product.name}}</del><br>(NOT available)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
+                           {{row.nombre}}
 
-    <div class="col-sm-3">
-        <div class="panel panel-success">
-            <div class="panel-heading">Done
-                <th class="text-right">
-                    <button class="btn btn-success" routerLink="/proyectos"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                </th>
-            </div>
-            
-            <div class="panel-body">
-                <div *ngFor="let product of availableProducts" class="panel panel-default"
-                    dnd-draggable [dragEnabled]="product.quantity>0" [dragData]="product" (onDragSuccess)="orderedProduct($event)" [dropZones]="['demo1']">
-                    <div class="panel-body">
-                        <div [hidden]="product.quantity===0">{{product.name}} - \${{product.cost}}<br>(available: {{product.quantity}})</div>
-                        <div [hidden]="product.quantity>0"><del>{{product.name}}</del><br>(NOT available)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div dnd-droppable (onDropSuccess)="addToBasket($event)" [dropZones]="['demo1']" class="panel panel-info">
-            <div class="panel-heading">Shopping Basket<br>(to pay: \${{totalCost()}})</div>
-            <div class="panel-body">
-                <div *ngFor="let product of shoppingBasket" class="panel panel-default">
-                    <div class="panel-body">
-                    {{product.name}}<br>(ordered: {{product.quantity}}<br>cost: \${{product.cost * product.quantity}})
+                        </div><br>
                     </div>
                 </div>
             </div>

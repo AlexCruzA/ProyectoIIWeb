@@ -15,20 +15,24 @@ import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.componen
 import { UsuarioService } from './usuario.service';
 import { EstadoDetailComponent } from './estado-detail/estado-detail.component';
 import { EstadoService } from './estado.service';
-
+import { TareaService } from './tarea.service'; 
 import {DndModule} from 'ng2-dnd';
+import { TareasCrudComponent } from './tareas-crud/tareas-crud.component';
+import { TareaDetailComponent } from './tarea-detail/tarea-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosCrudComponent,
     ProyectosCrudComponent,
+    TareasCrudComponent,
     EstadosCrudComponent,
     InicioComponent,
     DashboardComponent,
     ProyectoDetailComponent,
     UsuarioDetailComponent,
     EstadoDetailComponent,
+    TareaDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import {DndModule} from 'ng2-dnd';
     AppRoutingModule,
     DndModule.forRoot(),
   ],
-  providers: [ProyectoService, UsuarioService, EstadoService],
+  providers: [ProyectoService, UsuarioService, EstadoService, TareaService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

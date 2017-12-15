@@ -1,11 +1,9 @@
-<legend class="text-center">Estados</legend>
+<legend class="text-center">Tareas</legend>
 <div class="form-inline" *ngIf="crud_operation.is_visible">
+	<label>Nombre:</label>
+	<input class="form-control" type="text" size="10" placeholder="Piso Cocina..." [(ngModel)]="current_tarea.nombre">
 	<label>Id:</label>
-	<input class="form-control" type="text" size="10" placeholder="1151..." [(ngModel)]="current_estado.id">
-	<label>Descripción:</label>
-	<input class="form-control" type="text" size="10" placeholder="Terminado" [(ngModel)]="current_estado.descripcion">
-	<label>Orden</label>
-	<input class="form-control" type="text" size="10" placeholder="wasd..." [(ngModel)]="current_estado.orden">
+	<input class="form-control" type="text" size="5" placeholder="001..." [(ngModel)]="current_tarea.id">
 	<button class="btn btn-primary"(click)="save()">
 		<i class="fa fa-floppy-o" aria-hidden="true"></i>
 		Save
@@ -15,25 +13,22 @@
 		Cancel
 	</button>
 </div>
-<table class="table table-striped table-hover">
+<table  class="table table-striped table-hover">
 	<tr>
+		<th>Nombre</th>
 		<th>Id</th>
-		<th>Descripción</th>
-		<th>Orden</th>
 		<th class="text-right">
 			<button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
     		<button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 		</th>
 	</tr>
 	<tr *ngFor="let row of data">
+		<td>{{row.nombre}}</td>
 		<td>{{row.id}}</td>
-		<td>{{row.descripcion}}</td>
-		<td>{{row.orden}}</td>
-		<td class="text-right">
 			<div *ngIf="!row.confirm">
 				<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
       			<button class="btn btn-danger" (click)="row.confirm = true"><i class="fa fa-times" aria-hidden="true"></i></button>
-      			<a class="btn btn-info" [routerLink]="['/estados/', row.id]">
+      			<a class="btn btn-info" [routerLink]="['/tareas/', row.nombre]">
 		          <i class="fa fa-eye" aria-hidden="true"></i>
 		        </a>
 			</div>
@@ -41,7 +36,6 @@
 				<button class="btn btn-danger" (click)="row.confirm = false">Cancel</button>
       			<button class="btn btn-success" (click)="delete(row)">Confirm</button>
 			</div>
-		</td>
 	</tr>
 	<tr *ngIf="data.length == 0">
 		<td colspan="4" class="text-center">No data available</td>

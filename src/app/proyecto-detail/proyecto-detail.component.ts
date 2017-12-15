@@ -20,7 +20,7 @@ export class ProyectoDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-   ngOnDestroy() {
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 }

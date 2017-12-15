@@ -3,6 +3,7 @@ import { Estado } from './estado';
 
 @Injectable()
 export class EstadoService {
+  
   data: Estado[];
   constructor() { 
    	this.data = JSON.parse(localStorage.getItem('estados') || '[]');
