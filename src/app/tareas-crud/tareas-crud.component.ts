@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarea } from '../tarea';
 import { TareaService } from '../tarea.service';
+import { Proyecto } from '../proyecto';
+import { ProyectoService } from '../proyecto.service';
 
 @Component({
   selector: 'app-tareas-crud',
@@ -10,12 +12,14 @@ import { TareaService } from '../tarea.service';
 export class TareasCrudComponent implements OnInit {
 
 	data: Tarea[];
+  dataP: Proyecto[];
 	current_tarea: Tarea;
 	crud_operation = { is_new: false, is_visible: false };
-	constructor(private service: TareaService) { }
+	constructor(private service: TareaService, private serviceP: ProyectoService) { }
 
   ngOnInit() {
   	this.data = this.service.read();
+    this.dataP = this.serviceP.read();
   	this.current_tarea = new Tarea();
   }
 
@@ -47,4 +51,10 @@ export class TareasCrudComponent implements OnInit {
     this.current_tarea = new Tarea();
     this.crud_operation.is_visible = false;
   }
+
+    /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+ /*  myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }*/
 }
