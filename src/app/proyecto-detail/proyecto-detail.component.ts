@@ -11,10 +11,12 @@ import { Proyecto } from '../proyecto';
 export class ProyectoDetailComponent implements OnInit, OnDestroy {
 
   proyecto: Proyecto;
+  data: Proyecto[];
   private sub: any;
   constructor(private route: ActivatedRoute, private service: ProyectoService) { }
 
   ngOnInit() {
+    this.data = this.service.read();
   	this.sub = this.route.params.subscribe(params => {
       this.proyecto = this.service.findByName(params['nombre']);
     });

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from '../proyecto';
 import { ProyectoService } from '../proyecto.service';
+import { Tarea } from '../tarea';
+import { TareaService } from '../tarea.service';
+
 
 @Component({
   selector: 'app-proyectos-crud',
@@ -10,12 +13,14 @@ import { ProyectoService } from '../proyecto.service';
 export class ProyectosCrudComponent implements OnInit {
 
 	data: Proyecto[];
+  dataT: Tarea[];
 	current_proyecto: Proyecto;
 	crud_operation = { is_new: false, is_visible: false };
-	constructor(private service: ProyectoService) { }
+	constructor(private service: ProyectoService, private serviceT: TareaService) { }
 
   ngOnInit() {
   	this.data = this.service.read();
+    this.dataT = this.serviceT.read();
   	this.current_proyecto = new Proyecto();
   }
 

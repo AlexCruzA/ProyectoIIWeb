@@ -8,27 +8,19 @@
                 </th>
             </div>
             <div class="panel-body"> 
-                <div class="panel panel-default" dnd-draggable [dragData]="tarea" [dropZones]="['demo1']" 
-                *ngFor="let row of data">
+                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dropZones]="['zone1', 'zone2', 'zone3']" *ngFor="let row of data">
                     {{row.nombre}} 
 
-                    <div *ngIf="!row.confirm">
-                        <button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                        <button class="btn btn-danger" (click)="row.confirm = true"><i class="fa fa-times" aria-hidden="true"></i></button>
-                        <a class="btn btn-info" [routerLink]="['/tareas/', row.id]">
-                          <i class="fa fa-eye" aria-hidden="true"></i>
-                        </a>
-                    </div> 
                 </div>
             </div>
         </div>
     </div>
 
     <div class="col-sm-3">
-        <div dnd-droppable (onDropSuccess)="addToEstado($event)" [dropZones]="['demo1']" class="panel panel-info">
+        <div dnd-droppable  [dropZones]="['zone1']" (onDropSuccess)="restrictedDrop1=$event" class="panel panel-info">
             <div class="panel-heading">Open</div>
             <div class="panel-body">
-                <div *ngFor="let product of shoppingBasket" >
+                <div *ngIf="restrictedDrop1" >
                     <div class="panel-body">
                         <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
                            {{row.nombre}}
@@ -41,10 +33,10 @@
     </div>
     
     <div class="col-sm-3">
-        <div dnd-droppable (onDropSuccess)="addToEstado($event)" [dropZones]="['demo1']" class="panel panel-info">
+        <div dnd-droppable [dropZones]="['zone2']" (onDropSuccess)="restrictedDrop2=$event" class="panel panel-info">
             <div class="panel-heading">In Progess</div>
             <div class="panel-body">
-                 <div *ngFor="let product of shoppingBasket" >
+                 <div *ngIf="restrictedDrop2">
                     <div class="panel-body">
                         <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
                            {{row.nombre}}
@@ -57,10 +49,10 @@
     </div>
 
     <div class="col-sm-3">
-        <div dnd-droppable (onDropSuccess)="addToEstado($event)" [dropZones]="['demo1']" class="panel panel-info">
+        <div dnd-droppable [dropZones]="['zone3']" (onDropSuccess)="restrictedDrop3=$event" class="panel panel-info">
             <div class="panel-heading">Done</div>
             <div class="panel-body">
-                 <div *ngFor="let product of shoppingBasket" >
+                 <div *ngIf="restrictedDrop3">
                     <div class="panel-body">
                         <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
                            {{row.nombre}}

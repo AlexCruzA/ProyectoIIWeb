@@ -8,6 +8,7 @@
 	<input class="form-control" type="text" placeholder="pegue el link aqui..." [(ngModel)]="current_usuario.avatar">
 	<label>Tareas:</label>
 	<select  class="btn btn-default" [(ngModel)]="current_usuario.tarea">
+		<option>n/a</option>
 		<option *ngFor="let row of dataT">{{row.nombre}}</option>
 	</select>
 	<button class="btn btn-primary"(click)="save()">
