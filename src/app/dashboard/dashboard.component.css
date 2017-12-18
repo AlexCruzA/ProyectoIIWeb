@@ -1,0 +1,5 @@
+#wrapper{
+	display: flex;
+	align-content: space-between;
+	justify-content: space-around;
+}

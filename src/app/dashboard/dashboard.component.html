@@ -1,66 +1,19 @@
-<h4>Drag-and-Drop - Shopping basket</h4>
-<div class="row">
-    <div class="col-sm-3">
-        <div class="panel panel-success">
-            <div class="panel-heading">Tareas
-                <th class="text-right">
-                    <button class="btn btn-success" routerLink="/tareas"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                </th>
-            </div>
-            <div class="panel-body"> 
-                <div class="panel panel-default" dnd-draggable [dragEnabled]="true" [dropZones]="['zone1', 'zone2', 'zone3']" *ngFor="let row of data">
-                    {{row.nombre}} 
-
-                </div>
-            </div>
+<div id="wrapper" class='wrapper'  style="width:1000px; padding:3px;">
+    <div class="panel panel-info" [dragula]='"first-bag"' style="width:200px;">
+    <div class="panel-heading" >
+        <th class="text-right"> Tareas
+            <button class="btn btn-success" routerLink="/tareas"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </th>
+    </div>
+        <div class="panel-default" *ngFor="let row of data">
+            {{row.nombre}} 
         </div>
     </div>
-
-    <div class="col-sm-3">
-        <div dnd-droppable  [dropZones]="['zone1']" (onDropSuccess)="restrictedDrop1=$event" class="panel panel-info">
-            <div class="panel-heading">Open</div>
-            <div class="panel-body">
-                <div *ngIf="restrictedDrop1" >
-                    <div class="panel-body">
-                        <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
-                           {{row.nombre}}
-
-                        </div><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-sm-3">
-        <div dnd-droppable [dropZones]="['zone2']" (onDropSuccess)="restrictedDrop2=$event" class="panel panel-info">
-            <div class="panel-heading">In Progess</div>
-            <div class="panel-body">
-                 <div *ngIf="restrictedDrop2">
-                    <div class="panel-body">
-                        <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
-                           {{row.nombre}}
-
-                        </div><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-3">
-        <div dnd-droppable [dropZones]="['zone3']" (onDropSuccess)="restrictedDrop3=$event" class="panel panel-info">
-            <div class="panel-heading">Done</div>
-            <div class="panel-body">
-                 <div *ngIf="restrictedDrop3">
-                    <div class="panel-body">
-                        <div dnd-draggable *ngFor="let row of data"  class="panel panel-default" >
-                           {{row.nombre}}
-
-                        </div><br>
-                    </div>
-                </div>
-            </div>
+    <div *ngFor="let row of dataE" class="panel panel-info" [dragula]='"first-bag"' style="width:200px;">
+        <div class="panel-heading" >
+         <th class="text-right"> {{row.descripcion}}
+            <button class="btn btn-success" routerLink="/estados"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </th>
         </div>
     </div>
 </div>

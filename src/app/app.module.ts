@@ -16,9 +16,11 @@ import { UsuarioService } from './usuario.service';
 import { EstadoDetailComponent } from './estado-detail/estado-detail.component';
 import { EstadoService } from './estado.service';
 import { TareaService } from './tarea.service'; 
-import {DndModule} from 'ng2-dnd';
+//import {DndModule} from 'ng2-dnd';
 import { TareasCrudComponent } from './tareas-crud/tareas-crud.component';
 import { TareaDetailComponent } from './tarea-detail/tarea-detail.component';
+import { DragulaModule} from 'ng2-dragula/ng2-dragula';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { TareaDetailComponent } from './tarea-detail/tarea-detail.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    DndModule.forRoot(),
+    DragulaModule,
+    //DndModule.forRoot(),
   ],
   providers: [ProyectoService, UsuarioService, EstadoService, TareaService,],
   bootstrap: [AppComponent]

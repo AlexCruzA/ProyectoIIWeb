@@ -11,11 +11,6 @@
 	<label>Icono:</label>
 	<input class="form-control" type="text" size="5" placeholder="link aqui.." [(ngModel)]="current_proyecto.icono">
 
-	<label>Tareas:</label>
-	<select  class="btn btn-default" [(ngModel)]="current_proyecto.tarea">
-		<option *ngFor="let row of dataT">{{row.nombre}}--{{row.proyecto}}</option>
-	</select>
-
 	<button class="btn btn-primary"(click)="save()">
 		<i class="fa fa-floppy-o" aria-hidden="true"></i>
 		Save
@@ -32,7 +27,6 @@
 		<th>Fecha de Inicio</th>
 		<th>Colaboradores</th>
 		<th>Icono</th>
-		<th>Tareas</th>
 		<th class="text-right">
 			<button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
     		<button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
@@ -44,9 +38,6 @@
 		<td>{{row.fecha_inicio}}</td>
 		<td>{{row.colaboradores}}</td>
 		<td><a href="{{row.icono}}"><img src="{{row.icono}}" width="60" height="60"></a></td>
-		<td><select  class="btn btn-default">
-          <option>{{row.tarea}}</option>
-        </select></td>
 		<td class="text-right">
 			<div *ngIf="!row.confirm">
 				<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
