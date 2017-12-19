@@ -43,12 +43,18 @@ export class UsuariosCrudComponent implements OnInit {
     }
     this.save();
   }
-   save() {
-    if (this.crud_operation.is_new) {
-      this.data.push(this.current_usuario);
+  save() {
+    if(this.current_usuario.avatar !== "" 
+      && this.current_usuario.id !== "" 
+      && this.current_usuario.nombre !== "" 
+      && this.current_usuario.tarea !== ""){
+
+      if (this.crud_operation.is_new) {
+        this.data.push(this.current_usuario);
+      }
+      this.service.save(this.data);
+      this.current_usuario = new Usuario();
+      this.crud_operation.is_visible = false;
     }
-    this.service.save(this.data);
-    this.current_usuario = new Usuario();
-    this.crud_operation.is_visible = false;
   }
 }

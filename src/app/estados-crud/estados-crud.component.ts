@@ -39,12 +39,15 @@ export class EstadosCrudComponent implements OnInit {
     }
     this.save();
   }
-   save() {
-    if (this.crud_operation.is_new) {
-      this.data.push(this.current_estado);
+
+  save() {
+    if (this.current_estado.id !== "" && this.current_estado.descripcion !== "" && this.current_estado.orden !== "") {
+      if (this.crud_operation.is_new) {
+        this.data.push(this.current_estado);
+      }
+      this.service.save(this.data);
+      this.current_estado = new Estado();
+      this.crud_operation.is_visible = false;
     }
-    this.service.save(this.data);
-    this.current_estado = new Estado();
-    this.crud_operation.is_visible = false;
   }
 }

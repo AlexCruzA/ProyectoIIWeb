@@ -43,13 +43,16 @@ export class TareasCrudComponent implements OnInit {
     }
     this.save();
   }
-   save() {
-    if (this.crud_operation.is_new) {
-      this.data.push(this.current_tarea);
+  save() {
+    if(this.current_tarea.id !== "" && this.current_tarea.nombre !== "" && this.current_tarea.proyecto !== ""){
+
+      if (this.crud_operation.is_new) {
+        this.data.push(this.current_tarea);
+      }
+      this.service.save(this.data);
+      this.current_tarea = new Tarea();
+      this.crud_operation.is_visible = false;
     }
-    this.service.save(this.data);
-    this.current_tarea = new Tarea();
-    this.crud_operation.is_visible = false;
   }
 
     /* When the user clicks on the button, 
