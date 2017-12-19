@@ -3,6 +3,7 @@ export class Tarea {
 	nombre: string;
 	proyecto: string;
 	usuario: string;
+	estado: string;
 	constructor() {
     // code...
   	}

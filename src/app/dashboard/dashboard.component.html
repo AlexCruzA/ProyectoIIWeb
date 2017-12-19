@@ -6,7 +6,7 @@
         </th>
     </div>
         <div class="panel-default" *ngFor="let row of data">
-            {{row.nombre}} 
+            {{row.nombre}} -- {{row.proyecto}}
         </div>
     </div>
     <div *ngFor="let row of dataE" class="panel panel-info" [dragula]='"first-bag"' style="width:200px;">

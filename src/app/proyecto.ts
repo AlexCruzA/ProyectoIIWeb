@@ -4,6 +4,7 @@ export class Proyecto {
 	fecha_inicio: Date;
 	colaboradores: number;
 	icono: string;
+	contador: string;
 	constructor() {
     // code...
   	}

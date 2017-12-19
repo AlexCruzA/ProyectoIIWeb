@@ -28,6 +28,7 @@ export class ProyectosCrudComponent implements OnInit {
     this.current_proyecto = new Proyecto();
   	this.crud_operation.is_visible = true;
   	this.crud_operation.is_new = true;
+    this.current_proyecto.contador = "0";
   }
 
   edit(row) {
@@ -59,5 +60,4 @@ export class ProyectosCrudComponent implements OnInit {
       this.crud_operation.is_visible = false;
     }
   }
-
 }

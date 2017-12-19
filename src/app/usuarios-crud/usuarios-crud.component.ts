@@ -23,6 +23,7 @@ export class UsuariosCrudComponent implements OnInit {
   	this.current_usuario = new Usuario();
   	this.crud_operation.is_visible = true;
   	this.crud_operation.is_new = true;
+    this.current_usuario.contador = "0";
   }
 
   edit(row) {

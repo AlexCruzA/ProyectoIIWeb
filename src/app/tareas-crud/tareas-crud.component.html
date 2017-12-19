@@ -27,6 +27,7 @@
 		<th>Id</th>
 		<th>Proyecto</th>
 		<th>Usuario</th>
+		<th>Estado</th>
 		<th class="text-right">
 			<button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
     		<button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
@@ -37,6 +38,7 @@
 		<td>{{row.id}}</td>
 		<td>{{row.proyecto}}</td>
 		<td>{{row.usuario}}</td>
+		<td>{{row.estado}}</td>
 		<td class="text-right">
 			<div *ngIf="!row.confirm">
 				<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
