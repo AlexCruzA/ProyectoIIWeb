@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../usuario';
 import { UsuarioService } from '../usuario.service';
-import { Tarea } from '../tarea';
-import { TareaService } from '../tarea.service';
 
 @Component({
   selector: 'app-usuarios-crud',
@@ -12,14 +10,12 @@ import { TareaService } from '../tarea.service';
 export class UsuariosCrudComponent implements OnInit {
 
   data: Usuario[];
-  dataT: Tarea[];
   current_usuario: Usuario;
   crud_operation = { is_new: false, is_visible: false };
-  constructor(private service: UsuarioService, private serviceT: TareaService) { }
+  constructor(private service: UsuarioService) { }
 
   ngOnInit() {
     this.data = this.service.read();
-    this.dataT = this.serviceT.read();
   	this.current_usuario = new Usuario();
   }
 
@@ -46,8 +42,7 @@ export class UsuariosCrudComponent implements OnInit {
   save() {
     if(this.current_usuario.avatar !== "" 
       && this.current_usuario.id !== "" 
-      && this.current_usuario.nombre !== "" 
-      && this.current_usuario.tarea !== ""){
+      && this.current_usuario.nombre !== ""){
 
       if (this.crud_operation.is_new) {
         this.data.push(this.current_usuario);

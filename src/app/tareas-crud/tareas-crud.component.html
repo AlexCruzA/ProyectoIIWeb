@@ -8,7 +8,10 @@
 	<select  class="btn btn-default" [(ngModel)]="current_tarea.proyecto">
 		<option *ngFor="let row of dataP">{{row.nombre}}</option>
 	</select>
-
+	<label>Usuario:</label>
+	<select  class="btn btn-default" [(ngModel)]="current_tarea.usuario">
+		<option *ngFor="let row of dataU">{{row.nombre}}</option>
+	</select>
 	<button class="btn btn-primary"(click)="save()">
 		<i class="fa fa-floppy-o" aria-hidden="true"></i>
 		Save
@@ -23,6 +26,7 @@
 		<th>Nombre</th>
 		<th>Id</th>
 		<th>Proyecto</th>
+		<th>Usuario</th>
 		<th class="text-right">
 			<button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
     		<button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
@@ -32,6 +36,8 @@
 		<td>{{row.nombre}}</td>
 		<td>{{row.id}}</td>
 		<td>{{row.proyecto}}</td>
+		<td>{{row.usuario}}</td>
+		<td class="text-right">
 			<div *ngIf="!row.confirm">
 				<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
       			<button class="btn btn-danger" (click)="row.confirm = true"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -43,6 +49,7 @@
 				<button class="btn btn-danger" (click)="row.confirm = false">Cancel</button>
       			<button class="btn btn-success" (click)="delete(row)">Confirm</button>
 			</div>
+		</td>
 	</tr>
 	<tr *ngIf="data.length == 0">
 		<td colspan="4" class="text-center">No data available</td>

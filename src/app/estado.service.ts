@@ -9,7 +9,7 @@ export class EstadoService {
    	this.data = JSON.parse(localStorage.getItem('estados') || '[]');
   }
 
-   read() {
+  read() {
     this.data = JSON.parse(localStorage.getItem('estados') || '[]');
     return this.data;
   }

@@ -1,4 +1,4 @@
-<legend class="text-center">Usuarios</legend>
+<legend class="text-center">Personas</legend>
 <div class="form-inline" *ngIf="crud_operation.is_visible">
 	<label>Nombre:</label>
 	<input class="form-control" type="text" placeholder="Juan..." [(ngModel)]="current_usuario.nombre">
@@ -6,11 +6,11 @@
 	<input class="form-control" type="text" placeholder="2076..." [(ngModel)]="current_usuario.id">
 	<label>Avatar:</label>
 	<input class="form-control" type="text" placeholder="pegue el link aqui..." [(ngModel)]="current_usuario.avatar">
-	<label>Tareas:</label>
-	<select  class="btn btn-default" [(ngModel)]="current_usuario.tarea">
+	<!--<label>Tareas:</label>
+	<select  class="btn btn-default" [(ngModel)]="current_usuario.contador">
 		<option>n/a</option>
-		<option *ngFor="let row of dataT">{{row.nombre}}</option>
-	</select>
+		<option >000</option>
+	</select>-->
 	<button class="btn btn-primary"(click)="save()">
 		<i class="fa fa-floppy-o" aria-hidden="true"></i>
 		Save
@@ -35,7 +35,7 @@
 		<td>{{row.nombre}}</td>
 		<td>{{row.id}}</td>
 		<td><a href="{{row.avatar}}"><img src="{{row.avatar}}" width="60" height="60"></a></td>
-		<td>{{row.tarea}}</td>
+		<td>{{row.contador}}</td>
 		<td class="text-right">
 			<div *ngIf="!row.confirm">
 				<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>

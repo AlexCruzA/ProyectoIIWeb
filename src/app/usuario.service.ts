@@ -8,7 +8,7 @@ export class UsuarioService {
    	this.data = JSON.parse(localStorage.getItem('usuarios') || '[]');
   }
 
-   read() {
+  read() {
     this.data = JSON.parse(localStorage.getItem('usuarios') || '[]');
     return this.data;
   }
