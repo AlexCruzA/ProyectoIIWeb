@@ -6,10 +6,12 @@
 	<input class="form-control" type="text" size="5" placeholder="001..." [(ngModel)]="current_tarea.id">
 	<label>Proyecto:</label>
 	<select  class="btn btn-default" [(ngModel)]="current_tarea.proyecto">
+		<option>n/a</option>
 		<option *ngFor="let row of dataP">{{row.nombre}}</option>
 	</select>
 	<label>Usuario:</label>
 	<select  class="btn btn-default" [(ngModel)]="current_tarea.usuario">
+		<option>n/a</option>
 		<option *ngFor="let row of dataU">{{row.nombre}}</option>
 	</select>
 	<button class="btn btn-primary"(click)="save()">

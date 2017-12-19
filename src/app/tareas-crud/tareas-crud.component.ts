@@ -44,12 +44,16 @@ export class TareasCrudComponent implements OnInit {
     this.current_tarea = new Tarea();
   	this.crud_operation.is_visible = true;
   	this.crud_operation.is_new = true;
+    this.current_tarea.estado = "Open";
   }
 
   edit(row) {
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = false;
     this.current_tarea = row;
+    this.personasContadorMenos(row.usuario);
+    this.proyectosContadorMenos(row.proyecto);
+    this.estadosContadorMenos(row.estado);
   }
 
   delete(row) {
@@ -60,6 +64,7 @@ export class TareasCrudComponent implements OnInit {
     }
     this.personasContadorMenos(row.usuario);
     this.proyectosContadorMenos(row.proyecto);
+    this.estadosContadorMenos(row.estado);
     this.save();
   }
   save() {
@@ -71,6 +76,7 @@ export class TareasCrudComponent implements OnInit {
       }
       this.personasContador(this.current_tarea.usuario);
       this.proyectosContador(this.current_tarea.proyecto);
+      this.estadosContador(this.current_tarea.estado);
       this.service.save(this.data);
       this.current_tarea = new Tarea();
       this.crud_operation.is_visible = false;
@@ -81,7 +87,6 @@ export class TareasCrudComponent implements OnInit {
       if (this.dataU[i].nombre == row) {
         this.usuarioTemp = this.dataU[i];
         var suma = Number(this.usuarioTemp.contador.replace(/[^0-9\.-]+/g,"")) + Number("1".replace(/[^0-9\.-]+/g,""));
-
         this.usuarioTemp.contador = ( suma.toString());
         this.serviceU.save(this.dataU);
         return;
@@ -106,7 +111,6 @@ export class TareasCrudComponent implements OnInit {
     for (var i = 0; i < this.dataP.length; ++i) {
       if (this.dataP[i].nombre == row) {
         this.proyectoTemp = this.dataP[i];
-        //this.proyectoTemp.contador = (this.proyectoTemp.contador +1);
         var suma = Number(this.proyectoTemp.contador.replace(/[^0-9\.-]+/g,"")) + Number("1".replace(/[^0-9\.-]+/g,""));
         this.proyectoTemp.contador = (suma.toString());
         this.serviceP.save(this.dataP);
@@ -116,7 +120,6 @@ export class TareasCrudComponent implements OnInit {
   }
 
   proyectosContadorMenos(row){
-   debugger;
     for (var i = 0; i < this.dataP.length; ++i) {
       if (this.dataP[i].nombre == row) {
         this.proyectoTemp = this.dataP[i];
@@ -134,6 +137,19 @@ export class TareasCrudComponent implements OnInit {
         this.estadoTemp = this.dataE[i];
         //this.estadoTemp.contador = (this.estadoTemp.contador +1);
         var suma = Number(this.estadoTemp.contador.replace(/[^0-9\.-]+/g,"")) + Number("1".replace(/[^0-9\.-]+/g,""));
+        this.estadoTemp.contador = (suma.toString());
+        this.serviceE.save(this.dataE);
+        return;
+      }
+    }
+  }
+
+  estadosContadorMenos(row){
+    for (var i = 0; i < this.dataE.length; ++i) {
+      if (this.dataE[i].descripcion == row) {
+        this.estadoTemp = this.dataE[i];
+        //this.estadoTemp.contador = (this.estadoTemp.contador +1);
+        var suma = Number(this.estadoTemp.contador.replace(/[^0-9\.-]+/g,"")) - Number("1".replace(/[^0-9\.-]+/g,""));
         this.estadoTemp.contador = (suma.toString());
         this.serviceE.save(this.dataE);
         return;

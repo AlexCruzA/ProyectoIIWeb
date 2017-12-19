@@ -21,10 +21,6 @@ export class DashboardComponent {
 
   constructor(private serviceE: EstadoService ,private service: TareaService, private dragulaService: DragulaService) {
 
-   // dragulaService.setOptions('fifth-bag', {
-    //removeOnSpill: true
-    //});
-
     dragulaService.drag.subscribe((value) => {
     console.log(`drag: ${value[0]}`);
     this.onDrag(value.slice(1));
