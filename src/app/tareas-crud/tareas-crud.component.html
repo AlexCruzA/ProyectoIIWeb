@@ -9,7 +9,7 @@
 		<option>n/a</option>
 		<option *ngFor="let row of dataP">{{row.nombre}}</option>
 	</select>
-	<label>Usuario:</label>
+	<label>Persona:</label>
 	<select  class="btn btn-default" [(ngModel)]="current_tarea.usuario">
 		<option>n/a</option>
 		<option *ngFor="let row of dataU">{{row.nombre}}</option>
@@ -29,7 +29,7 @@
 		<th>Nombre</th>
 		<th>Id</th>
 		<th>Proyecto</th>
-		<th>Usuario</th>
+		<th>Persona</th>
 		<th>Estado</th>
 		<th class="text-right">
 			<button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
