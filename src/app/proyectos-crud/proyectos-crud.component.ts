@@ -46,11 +46,12 @@ export class ProyectosCrudComponent implements OnInit {
     this.save();
   }
    save() {
-    if(this.current_proyecto.colaboradores !== 0 
-      && this.current_proyecto.fecha_inicio !== null 
-      && this.current_proyecto.icono !== "" 
-      && this.current_proyecto.id !== "" 
-      && this.current_proyecto.nombre !== ""){
+    if(//this.current_proyecto.colaboradores !== 0 
+      //&& this.current_proyecto.fecha_inicio !== null 
+      //&& this.current_proyecto.icono !== "" 
+      //&& this.current_proyecto.id !== "" 
+      //&& this.current_proyecto.nombre !== "" 
+      (this.current_proyecto.nombre !== "undefined"){
       
       if (this.crud_operation.is_new) {
         this.data.push(this.current_proyecto);
