@@ -1,4 +1,9 @@
-<legend class="text-center">Personas</legend>
+<legend class="text-center">Personas
+	<button class="btn btn-default" routerLink="/usuariosR">
+		<i  aria-hidden="true"></i>
+			Reporte		    
+	</button>
+</legend>
 <div class="form-inline" *ngIf="crud_operation.is_visible">
 	<label>Nombre:</label>
 	<input class="form-control" type="text" placeholder="Juan..." [(ngModel)]="current_usuario.nombre">
@@ -25,7 +30,7 @@
 		<th>Nombre</th>
 		<th>Id</th>
 		<th>Avatar</th>
-		<th>Tareas</th>
+		<!--<th>Tareas</th>-->
 		<th class="text-right">
 			<button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
     		<button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
@@ -35,7 +40,7 @@
 		<td>{{row.nombre}}</td>
 		<td>{{row.id}}</td>
 		<td><a href="{{row.avatar}}"><img src="{{row.avatar}}" width="60" height="60"></a></td>
-		<td>{{row.contador}}</td>
+		<!--<td>{{row.contador}}</td>-->
 		<td class="text-right">
 			<div *ngIf="!row.confirm">
 				<button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>

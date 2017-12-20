@@ -11,6 +11,9 @@ import { ProyectoDetailComponent } from './proyecto-detail/proyecto-detail.compo
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 import { EstadoDetailComponent } from './estado-detail/estado-detail.component';
 import { TareaDetailComponent } from './tarea-detail/tarea-detail.component';
+import { ProyectosReporteComponent } from './proyectos-reporte/proyectos-reporte.component';
+import { UsuariosReporteComponent } from './usuarios-reporte/usuarios-reporte.component';
+import { EstadosReporteComponent } from './estados-reporte/estados-reporte.component';
 
  
 const routes: Routes = [
@@ -25,6 +28,9 @@ const routes: Routes = [
   { path: 'usuarios/:nombre', component: UsuarioDetailComponent },
   { path: 'estados/:id', component: EstadoDetailComponent },
   { path: 'tareas/:nombre', component: TareaDetailComponent },
+  { path: 'proyectosR', component: ProyectosReporteComponent},
+  { path: 'usuariosR', component: UsuariosReporteComponent},
+  { path: 'estadosR', component: EstadosReporteComponent},
 ];
 
 @NgModule({

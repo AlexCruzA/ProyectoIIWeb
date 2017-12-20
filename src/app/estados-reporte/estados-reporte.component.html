@@ -1,0 +1,14 @@
+<legend class="text-center">Reporte de tareas por estados <a class="pull-right" routerLink="/estados" >Volver</a></legend>
+<table class="table table-striped table-hover">
+	<tr>
+		<th>Descripción</th>
+		<th>Tareas</th>
+	</tr>
+	<tr *ngFor="let row of data">
+		<td>{{row.descripcion}}</td>
+		<td>{{row.contador}}</td>
+	</tr>
+	<tr *ngIf="data.length == 0">
+		<td colspan="4" class="text-center">No data available</td>
+	</tr>
+</table>

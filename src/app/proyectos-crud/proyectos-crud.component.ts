@@ -12,7 +12,7 @@ import { TareaService } from '../tarea.service';
 })
 export class ProyectosCrudComponent implements OnInit {
 
-	data: Proyecto[];
+  data: Proyecto[];
   dataT: Tarea[];
 	current_proyecto: Proyecto;
 	crud_operation = { is_new: false, is_visible: false };

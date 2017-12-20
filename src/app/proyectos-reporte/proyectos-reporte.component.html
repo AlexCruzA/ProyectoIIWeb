@@ -1,0 +1,17 @@
+<legend class="text-center">Reporte de tareas por proyecto <a class="pull-right" routerLink="/proyectos" >Volver</a>
+</legend>
+<table  class="table table-striped table-hover">
+	<tr>
+		<th>Nombre</th>
+		<th>Id</th>
+		<th>Tareas</th>
+	</tr>
+	<tr *ngFor="let row of data">
+		<td>{{row.nombre}}</td>
+		<td>{{row.id}}</td>
+		<td>{{row.contador}}</td>
+	</tr>
+	<tr *ngIf="data.length == 0">
+		<td colspan="4" class="text-center">No data available</td>
+	</tr>
+</table>
