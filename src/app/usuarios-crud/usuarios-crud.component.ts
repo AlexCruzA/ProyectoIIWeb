@@ -9,6 +9,7 @@ import { UsuarioService } from '../usuario.service';
 })
 export class UsuariosCrudComponent implements OnInit {
 
+  message:string;
   data: Usuario[];
   current_usuario: Usuario;
   crud_operation = { is_new: false, is_visible: false };
@@ -40,6 +41,7 @@ export class UsuariosCrudComponent implements OnInit {
     }
     this.save();
   }
+  
   save() {
     if(this.current_usuario.avatar !== "" 
       && this.current_usuario.id !== "" 
@@ -52,5 +54,6 @@ export class UsuariosCrudComponent implements OnInit {
       this.current_usuario = new Usuario();
       this.crud_operation.is_visible = false;
     }
+    this.message = "Debe llenar todos los campos";
   }
 }

@@ -16,7 +16,7 @@ import { EstadoService } from '../estado.service';
 })
 export class TareasCrudComponent implements OnInit {
 
-
+  message:string;
   dataE: Estado[];
   data: Tarea[];
   dataP: Proyecto[];
@@ -27,7 +27,7 @@ export class TareasCrudComponent implements OnInit {
   proyectoTemp: Proyecto;
 	crud_operation = { is_new: false, is_visible: false };
 	constructor(private service: TareaService, private serviceU: UsuarioService, private serviceP: ProyectoService,
-   private serviceE: EstadoService) { }
+  private serviceE: EstadoService) { }
 
   ngOnInit() {
   	this.data = this.service.read();
@@ -67,6 +67,7 @@ export class TareasCrudComponent implements OnInit {
     this.estadosContadorMenos(row.estado);
     this.save();
   }
+
   save() {
     if(this.current_tarea.id !== "" && this.current_tarea.nombre !== "" && this.current_tarea.proyecto !== "" 
       && this.current_tarea.usuario !== ""){
@@ -81,7 +82,9 @@ export class TareasCrudComponent implements OnInit {
       this.current_tarea = new Tarea();
       this.crud_operation.is_visible = false;
     }
+    this.message = "Debe llenar todos los campos";
   }
+  
   personasContador(row){
     for (var i = 0; i < this.dataU.length; ++i) {
       if (this.dataU[i].nombre == row) {

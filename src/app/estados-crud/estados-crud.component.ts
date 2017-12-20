@@ -9,6 +9,7 @@ import { EstadoService } from '../estado.service';
 })
 export class EstadosCrudComponent implements OnInit {
 
+  message:string;
 	data: Estado[];
 	current_estado: Estado;
 	crud_operation = { is_new: false, is_visible: false };
@@ -49,5 +50,6 @@ export class EstadosCrudComponent implements OnInit {
       this.current_estado = new Estado();
       this.crud_operation.is_visible = false;
     }
+    this.message = "Debe llenar todos los campos";
   }
 }

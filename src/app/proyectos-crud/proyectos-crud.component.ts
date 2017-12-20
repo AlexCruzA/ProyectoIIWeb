@@ -12,9 +12,10 @@ import { TareaService } from '../tarea.service';
 })
 export class ProyectosCrudComponent implements OnInit {
 
+  message:string;
   data: Proyecto[];
   dataT: Tarea[];
-	current_proyecto: Proyecto;
+  current_proyecto: Proyecto;
 	crud_operation = { is_new: false, is_visible: false };
 	constructor(private service: ProyectoService, private serviceT: TareaService) { }
 
@@ -45,13 +46,18 @@ export class ProyectosCrudComponent implements OnInit {
     }
     this.save();
   }
+  
    save() {
-    if(//this.current_proyecto.colaboradores !== 0 
-      //&& this.current_proyecto.fecha_inicio !== null 
-      //&& this.current_proyecto.icono !== "" 
-      //&& this.current_proyecto.id !== "" 
-      //&& this.current_proyecto.nombre !== "" 
-      (this.current_proyecto.nombre !== "undefined"){
+    if(this.current_proyecto.colaboradores !== 0 
+      && this.current_proyecto.fecha_inicio !== null 
+      && this.current_proyecto.icono !== "" 
+      && this.current_proyecto.id !== "" 
+      && this.current_proyecto.nombre !== "" 
+      /*&& (this.current_proyecto.nombre !== undefined
+      && this.current_proyecto.colaboradores !== undefined 
+      && this.current_proyecto.fecha_inicio !== undefined 
+      && this.current_proyecto.icono !== undefined 
+      && this.current_proyecto.id !== undefined)*/){
       
       if (this.crud_operation.is_new) {
         this.data.push(this.current_proyecto);
@@ -60,5 +66,6 @@ export class ProyectosCrudComponent implements OnInit {
       this.current_proyecto = new Proyecto();
       this.crud_operation.is_visible = false;
     }
+    this.message = "Debe llenar todos los campos";
   }
 }
