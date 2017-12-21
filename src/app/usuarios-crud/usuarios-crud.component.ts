@@ -39,13 +39,16 @@ export class UsuariosCrudComponent implements OnInit {
     if (index > -1) {
       this.data.splice(index, 1);
     }
-    this.save();
+    this.saveD();
   }
   
   save() {
     if(this.current_usuario.avatar !== "" 
       && this.current_usuario.id !== "" 
-      && this.current_usuario.nombre !== ""){
+      && this.current_usuario.nombre !== ""
+      &&this.current_usuario.avatar !== undefined 
+      && this.current_usuario.id !== undefined 
+      && this.current_usuario.nombre !== undefined){
 
       if (this.crud_operation.is_new) {
         this.data.push(this.current_usuario);
@@ -55,5 +58,15 @@ export class UsuariosCrudComponent implements OnInit {
       this.crud_operation.is_visible = false;
     }
     this.message = "Debe llenar todos los campos";
+  }
+
+  saveD(){
+    if (this.crud_operation.is_new) {
+        this.data.push(this.current_usuario);
+      }
+      this.service.save(this.data);
+      this.current_usuario = new Usuario();
+      this.crud_operation.is_visible = false;
+    }
   }
 }

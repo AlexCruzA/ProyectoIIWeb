@@ -38,11 +38,17 @@ export class EstadosCrudComponent implements OnInit {
     if (index > -1) {
       this.data.splice(index, 1);
     }
-    this.save();
+    this.saveD();
   }
 
   save() {
-    if (this.current_estado.id !== "" && this.current_estado.descripcion !== "" && this.current_estado.orden !== "") {
+    if (this.current_estado.id !== "" 
+      && this.current_estado.descripcion !== ""
+      && this.current_estado.orden !== ""
+      && this.current_estado.id !== undefined 
+      && this.current_estado.descripcion !== undefined
+      && this.current_estado.orden !== undefined) {
+
       if (this.crud_operation.is_new) {
         this.data.push(this.current_estado);
       }
@@ -51,5 +57,14 @@ export class EstadosCrudComponent implements OnInit {
       this.crud_operation.is_visible = false;
     }
     this.message = "Debe llenar todos los campos";
+  }
+
+  saveD(){
+    if (this.crud_operation.is_new) {
+        this.data.push(this.current_estado);
+     }
+    this.service.save(this.data);
+    this.current_estado = new Estado();
+    this.crud_operation.is_visible = false;
   }
 }

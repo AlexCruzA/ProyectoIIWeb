@@ -65,12 +65,27 @@ export class TareasCrudComponent implements OnInit {
     this.personasContadorMenos(row.usuario);
     this.proyectosContadorMenos(row.proyecto);
     this.estadosContadorMenos(row.estado);
-    this.save();
+    this.saveD();
   }
 
   save() {
-    if(this.current_tarea.id !== "" && this.current_tarea.nombre !== "" && this.current_tarea.proyecto !== "" 
-      && this.current_tarea.usuario !== ""){
+    if(this.current_tarea.id !== ""
+      && this.current_tarea.nombre !== ""
+      && this.current_tarea.proyecto !== "" 
+      && this.current_tarea.usuario !== ""
+      && this.current_tarea.id !== ""
+      && this.current_tarea.nombre !== ""
+      && this.current_tarea.proyecto !== "" 
+      && this.current_tarea.usuario !== ""
+      && this.current_tarea.id !== undefined
+      && this.current_tarea.nombre !== undefined
+      && this.current_tarea.proyecto !== undefined
+      && this.current_tarea.usuario !== undefined
+      && this.current_tarea.id !== undefined
+      && this.current_tarea.nombre !== undefined
+      && this.current_tarea.proyecto !== undefined 
+      && this.current_tarea.usuario !== undefined
+      ){
 
       if (this.crud_operation.is_new) {
         this.data.push(this.current_tarea);
@@ -83,6 +98,18 @@ export class TareasCrudComponent implements OnInit {
       this.crud_operation.is_visible = false;
     }
     this.message = "Debe llenar todos los campos";
+  }
+
+  saveD(){
+     if (this.crud_operation.is_new) {
+        this.data.push(this.current_tarea);
+      }
+      this.personasContador(this.current_tarea.usuario);
+      this.proyectosContador(this.current_tarea.proyecto);
+      this.estadosContador(this.current_tarea.estado);
+      this.service.save(this.data);
+      this.current_tarea = new Tarea();
+      this.crud_operation.is_visible = false;
   }
   
   personasContador(row){

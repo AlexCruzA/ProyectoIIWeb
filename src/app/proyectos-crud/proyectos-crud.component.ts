@@ -44,7 +44,7 @@ export class ProyectosCrudComponent implements OnInit {
     if (index > -1) {
       this.data.splice(index, 1);
     }
-    this.save();
+    this.saveD();
   }
   
    save() {
@@ -53,11 +53,11 @@ export class ProyectosCrudComponent implements OnInit {
       && this.current_proyecto.icono !== "" 
       && this.current_proyecto.id !== "" 
       && this.current_proyecto.nombre !== "" 
-      /*&& (this.current_proyecto.nombre !== undefined
+      && (this.current_proyecto.nombre !== undefined
       && this.current_proyecto.colaboradores !== undefined 
       && this.current_proyecto.fecha_inicio !== undefined 
       && this.current_proyecto.icono !== undefined 
-      && this.current_proyecto.id !== undefined)*/){
+      && this.current_proyecto.id !== undefined)){
       
       if (this.crud_operation.is_new) {
         this.data.push(this.current_proyecto);
@@ -67,5 +67,14 @@ export class ProyectosCrudComponent implements OnInit {
       this.crud_operation.is_visible = false;
     }
     this.message = "Debe llenar todos los campos";
+  }
+  saveD(){
+    if (this.crud_operation.is_new) {
+        this.data.push(this.current_proyecto);
+      }
+      this.service.save(this.data);
+      this.current_proyecto = new Proyecto();
+      this.crud_operation.is_visible = false;
+    }
   }
 }
